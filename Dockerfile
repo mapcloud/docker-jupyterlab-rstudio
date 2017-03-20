@@ -1,7 +1,5 @@
 FROM dclong/jupyterlab-r
 
-ADD rstudio-server.deb /
-
 RUN apt-get update \
     && apt-get install -y --no-install-recommends git wget \
     && rstudio_version=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) \
