@@ -8,6 +8,9 @@ Jupyter Notebook/Lab with IRKernel and RStudio Server for R users.
 
 ## Usage 
 ```
+docker run -d -p 8787:8787 -p 8888:8888 -p 8889:8889 -e DOCKER_USER_ID=`id -u` -e DOCKER_USER=`id -un` -v $HOME:/jupyter dclong/jupyterlab-rstudio
+```
+```
 docker run -d -p 8787:8787 -p 8888:8888 -p 8889:8889 -e DOCKER_USER_ID=`id -u` -e DOCKER_USER=`id -un` -e DOCKER_PASSWORD=`id -un` -v $HOME:/home/`id -un` -v $HOME:/jupyter dclong/jupyterlab-rstudio
 ```
 ```
