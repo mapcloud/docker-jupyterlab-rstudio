@@ -1,6 +1,6 @@
 # JupyterLab and RStudio Server for R Users
 
-Jupyter Notebook/Lab with IRKernel and RStudio Server for R users.
+JupyterLab with IRKernel (with many popular R packages) and RStudio Server.
 
 ## About the Author
 
@@ -9,7 +9,7 @@ Jupyter Notebook/Lab with IRKernel and RStudio Server for R users.
 ## Usage 
 
 ```
-docker run -d -p 8787:8787 -p 8888:8888 -p 8889:8889 \
+docker run -d -p 8787:8787 -p 8888:8888 \
     -e DOCKER_USER=`id -un` \
     -e DOCKER_USER_ID=`id -u` \
     -e DOCKER_PASSWORD=`id -un` \
@@ -18,7 +18,7 @@ docker run -d -p 8787:8787 -p 8888:8888 -p 8889:8889 \
 ```
 
 ```
-docker run -d -p 8787:8787 -p 8888:8888 -p 8889:8889 \
+docker run -d -p 8787:8787 -p 8888:8888 \
     -e DOCKER_USER=`id -un` \
     -e DOCKER_USER_ID=`id -u` \
     -v $HOME:/jupyter \
