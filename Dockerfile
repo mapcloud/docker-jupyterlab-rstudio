@@ -5,16 +5,15 @@ RUN yum update -y \
     && rstudio_version=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) \
     && wget https://download2.rstudio.org/rstudio-server-rhel-${rstudio_version}-x86_64.rpm -O /rstudio-server.rpm \
     && yum install -y --nogpgcheck /rstudio-server.rpm \
-    && rm /rstudio-server.rpm
+    && rm /rstudio-server.rpm \
+    && yum clean all
 
 # configure a non-root user for RStudio
 RUN useradd rstudio \
     && echo "rstudio:rstudio" | chpasswd \
     && mkdir -p /home/rstudio \
-    && chown rstudio:rstudio /home/rstudio \
-    && gpasswd -a rstudio staff \ 
-    && apt-get autoremove \
-    && apt-get autoclean 
+    && chown rstudio:rstudio /home/rstudio
+    # && gpasswd -a rstudio staff \ 
 
 EXPOSE 8787
 
