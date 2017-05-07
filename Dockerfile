@@ -1,11 +1,11 @@
-FROM dclong/jupyterlab-rp
+FROM dclong/jupyterlab-rp:centos
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends wget \
+RUN yum update -y \
+    && yum install -y wget \
     && rstudio_version=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) \
-    && wget https://download2.rstudio.org/rstudio-server-${rstudio_version}-amd64.deb -O /rstudio-server.deb \
-    && apt-get install -y --no-install-recommends /rstudio-server.deb \
-    && rm /rstudio-server.deb
+    && wget https://download2.rstudio.org/rstudio-server-${rstudio_version}-amd64.rpm -O /rstudio-server.rpm \
+    && yum install -y /rstudio-server.rpm \
+    && rm /rstudio-server.rpm
 
 # configure a non-root user for RStudio
 RUN useradd rstudio \
