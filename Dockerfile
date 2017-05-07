@@ -3,8 +3,8 @@ FROM dclong/jupyterlab-rp:centos
 RUN yum update -y \
     && yum install -y wget \
     && rstudio_version=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) \
-    && wget https://download2.rstudio.org/rstudio-server-${rstudio_version}-amd64.rpm -O /rstudio-server.rpm \
-    && yum install -y /rstudio-server.rpm \
+    && wget https://download2.rstudio.org/rstudio-server-rhel-${rstudio_version}-x86_64.rpm -O /rstudio-server.rpm \
+    && yum install -y --nogpgcheck /rstudio-server.rpm \
     && rm /rstudio-server.rpm
 
 # configure a non-root user for RStudio
