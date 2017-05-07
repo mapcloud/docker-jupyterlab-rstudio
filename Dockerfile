@@ -10,7 +10,7 @@ RUN yum update -y \
 # configure a non-root user for RStudio
 RUN useradd rstudio \
     && echo "rstudio:rstudio" | chpasswd \
-    && mkdir /home/rstudio \
+    && mkdir -p /home/rstudio \
     && chown rstudio:rstudio /home/rstudio \
     && gpasswd -a rstudio staff \ 
     && apt-get autoremove \
