@@ -8,13 +8,6 @@ RUN yum update -y \
     && rm /rstudio-server.rpm \
     && yum clean all
 
-# configure a non-root user for RStudio
-RUN useradd rstudio \
-    && echo "rstudio:rstudio" | chpasswd \
-    && mkdir -p /home/rstudio \
-    && chown rstudio:rstudio /home/rstudio
-    # && gpasswd -a rstudio staff \ 
-
 EXPOSE 8787
 
 ADD Rprofile.site /usr/local/lib/R/etc/
